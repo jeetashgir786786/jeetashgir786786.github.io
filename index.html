@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeetash Goswami — Electrical Engineer · PCB, Embedded, IoT, MATLAB</title>
+  <meta name="description" content="Jeetash Goswami — electrical engineer designing production-ready PCBs, embedded firmware (STM32, ESP32), IoT systems and MATLAB/Simulink & Ansys simulations for clients worldwide.">
+  <meta name="theme-color" content="#f4f2ee">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jeetash Goswami — Electrical Engineer">
+  <meta property="og:description" content="PCB design, embedded firmware, IoT systems and MATLAB/Simulink modelling. Case studies and contact.">
+  <meta property="og:image" content="assets/img/profile.webp">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap top-inner">
+    <a href="./" class="name">Jeetash Goswami</a>
+    <span class="top-role muted">Electrical Engineer</span>
+    <span class="top-time muted mono" id="localTime">Karachi</span>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#lab">Lab</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main>
+  <!-- Intro -->
+  <section class="intro wrap">
+    <p class="status fade"><span class="dot"></span>Available for new projects</p>
+    <h1 class="intro-title fade">Electrical engineer building PCBs, embedded firmware and IoT&nbsp;systems — and simulating them before they're&nbsp;built.</h1>
+    <dl class="facts fade">
+      <div><dt>Based in</dt><dd>Karachi, Pakistan<br><span class="muted">Working remotely worldwide</span></dd></div>
+      <div><dt>Disciplines</dt><dd>PCB design · Firmware<br>IoT · MATLAB / Simulink</dd></div>
+      <div><dt>Education</dt><dd>BE Electrical Engineering<br><span class="muted">NUST — PNEC</span></dd></div>
+      <div><dt>Contact</dt><dd><a class="ul" data-link="email" data-text="email">Email</a><br><a class="ul" href="#contact">Start a project →</a></dd></div>
+    </dl>
+    <div class="strip fade">
+      <a href="project.html?p=bldc"><figure><img src="assets/img/projects/bldc-2.webp" alt="1.5 kW solar BLDC controller PCB"><figcaption><span>01</span>Solar BLDC controller</figcaption></figure></a>
+      <a href="project.html?p=optera"><figure><img src="assets/img/projects/optera-1.webp" alt="OPTERA medical controller"><figcaption><span>04</span>RF ablation controller</figcaption></figure></a>
+      <a href="project.html?p=oil"><figure><img src="assets/img/projects/oil-3.webp" alt="Oil dispenser controller PCB"><figcaption><span>02</span>Dispenser controller</figcaption></figure></a>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section wrap" id="work">
+    <div class="sec-head">
+      <h2 class="sec-title">Selected work <sup id="workCount"></sup></h2>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter projects"></div>
+    </div>
+    <div class="work" id="workGrid"></div>
+  </section>
+
+  <!-- Services -->
+  <section class="section wrap" id="services">
+    <div class="sec-head">
+      <h2 class="sec-title">Services</h2>
+      <p class="sec-note muted">One engineer across the whole stack — from schematic to simulation.</p>
+    </div>
+    <ol class="services" id="servicesList"></ol>
+  </section>
+
+  <!-- Lab -->
+  <section class="section wrap" id="lab">
+    <div class="sec-head">
+      <h2 class="sec-title">Lab</h2>
+      <p class="sec-note muted">Small in-browser demos of the maths behind my work. Change the controls and watch the results.</p>
+    </div>
+    <div class="lab">
+      <div class="lab-tabs" role="tablist">
+        <button class="lab-tab active" data-lab="fft" role="tab"><span class="mono">01</span> Harmonics &amp; THD</button>
+        <button class="lab-tab" data-lab="pid" role="tab"><span class="mono">02</span> PID tuning</button>
+        <button class="lab-tab" data-lab="pcb" role="tab"><span class="mono">03</span> PCB layers</button>
+        <button class="lab-tab" data-lab="iot" role="tab"><span class="mono">04</span> IoT telemetry</button>
+      </div>
+
+      <div class="lab-panel active" id="lab-fft">
+        <div class="lab-body">
+          <div class="lab-controls">
+            <p class="small muted">Build a distorted current waveform and read its spectrum and Total Harmonic Distortion — like the Simulink FFT Analyzer.</p>
+            <div class="presets">
+              <button class="chip-btn" data-preset="clean">Clean grid</button>
+              <button class="chip-btn" data-preset="vfd">6-pulse drive</button>
+              <button class="chip-btn" data-preset="smps">SMPS load</button>
+            </div>
+            <label class="ctl">Fundamental <select id="fftF"><option value="50">50 Hz</option><option value="60">60 Hz</option></select></label>
+            <label class="ctl">3rd harmonic <output id="o-h3">0%</output><input type="range" id="fftH3" min="0" max="60" value="0"></label>
+            <label class="ctl">5th harmonic <output id="o-h5">20%</output><input type="range" id="fftH5" min="0" max="60" value="20"></label>
+            <label class="ctl">7th harmonic <output id="o-h7">14%</output><input type="range" id="fftH7" min="0" max="60" value="14"></label>
+            <label class="ctl">11th harmonic <output id="o-h11">9%</output><input type="range" id="fftH11" min="0" max="40" value="9"></label>
+            <label class="ctl">Noise <output id="o-noise">2%</output><input type="range" id="fftN" min="0" max="20" value="2"></label>
+          </div>
+          <div class="lab-view">
+            <div class="readouts">
+              <div><span>THD</span><b id="thdOut">—</b></div>
+              <div><span>Fundamental peak</span><b id="fundOut">—</b></div>
+              <div><span>Crest factor</span><b id="crestOut">—</b></div>
+              <div><span>IEEE 519 (≤ 8%)</span><b id="ieeeOut">—</b></div>
+            </div>
+            <div class="plot"><span class="plot-title mono">i(t) — 3 cycles</span><canvas id="fftTime"></canvas></div>
+            <div class="plot"><span class="plot-title mono">|I(f)| — % of fundamental</span><canvas id="fftSpec"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-panel" id="lab-pid">
+        <div class="lab-body">
+          <div class="lab-controls">
+            <p class="small muted">Plant: DC motor speed model G(s) = 1 / ((0.5s+1)(0.1s+1)). Tune the controller and read the step-response metrics.</p>
+            <div class="presets">
+              <button class="chip-btn" data-pid="1,0,0">P only</button>
+              <button class="chip-btn" data-pid="6,4,0">Aggressive PI</button>
+              <button class="chip-btn" data-pid="4.2,5.5,0.25">Well tuned</button>
+            </div>
+            <label class="ctl">Kp <output id="o-kp">4.2</output><input type="range" id="kp" min="0" max="20" step="0.1" value="4.2"></label>
+            <label class="ctl">Ki <output id="o-ki">5.5</output><input type="range" id="ki" min="0" max="20" step="0.1" value="5.5"></label>
+            <label class="ctl">Kd <output id="o-kd">0.25</output><input type="range" id="kd" min="0" max="2" step="0.01" value="0.25"></label>
+          </div>
+          <div class="lab-view">
+            <div class="readouts">
+              <div><span>Rise time</span><b id="pidRise">—</b></div>
+              <div><span>Overshoot</span><b id="pidOs">—</b></div>
+              <div><span>Settling (2%)</span><b id="pidSettle">—</b></div>
+              <div><span>SS error</span><b id="pidSse">—</b></div>
+            </div>
+            <div class="plot tall"><span class="plot-title mono">y(t) vs r(t) — 0 to 4 s</span><canvas id="pidPlot"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-panel" id="lab-pcb">
+        <div class="lab-body">
+          <div class="lab-controls">
+            <p class="small muted">An example ESP32 sensor-node layout. Toggle layers, hover a part to see why it's there, then run a design-rule check.</p>
+            <div class="toggles">
+              <label class="switch"><input type="checkbox" data-layer="top" checked><span></span>Top copper</label>
+              <label class="switch"><input type="checkbox" data-layer="bottom" checked><span></span>Bottom copper</label>
+              <label class="switch"><input type="checkbox" data-layer="silk" checked><span></span>Silkscreen</label>
+              <label class="switch"><input type="checkbox" data-layer="parts" checked><span></span>Components</label>
+            </div>
+            <button class="btn" id="drcBtn">Run DRC</button>
+            <div class="pcb-info" id="pcbInfo"><span class="mono label">Hover a component</span><b>—</b><p class="small muted">Each part explains its role in the design.</p></div>
+          </div>
+          <div class="lab-view">
+            <div class="pcb-stage" id="pcbStage"><svg id="pcbSvg" viewBox="0 0 600 400" role="img" aria-label="Interactive PCB layout drawing"></svg><div class="drc-scan" id="drcScan"></div></div>
+            <div class="drc-log mono" id="drcLog">DRC idle · clearance 0.152 mm · trace 0.254 mm · drill 0.3 mm</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-panel" id="lab-iot">
+        <div class="lab-body">
+          <div class="lab-controls">
+            <p class="small muted">A simulated ESP32 node publishing sensor data over MQTT. Switch the load, or drop the Wi‑Fi and watch it buffer and recover.</p>
+            <div class="node-state">
+              <div><span class="mono label">Link</span><b id="iotLink" class="ok">● Online</b></div>
+              <div><span class="mono label">Relay</span><b id="iotRelayState">OFF</b></div>
+              <div><span class="mono label">Buffered</span><b id="iotBuf">0</b></div>
+            </div>
+            <div class="iot-btns">
+              <button class="btn" id="iotRelay">Toggle pump relay</button>
+              <button class="btn btn-line" id="iotWifi">Drop Wi‑Fi</button>
+            </div>
+            <div class="mqtt mono" id="mqttLog" aria-live="polite"></div>
+          </div>
+          <div class="lab-view">
+            <div class="gauges">
+              <div class="gauge" id="gTemp"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-fg" d="M10 62 A50 50 0 0 1 110 62"/></svg><b>—</b><span>Temperature °C</span></div>
+              <div class="gauge" id="gCur"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-fg" d="M10 62 A50 50 0 0 1 110 62"/></svg><b>—</b><span>Pump current A</span></div>
+              <div class="gauge" id="gHum"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-fg" d="M10 62 A50 50 0 0 1 110 62"/></svg><b>—</b><span>Humidity %</span></div>
+            </div>
+            <div class="plot tall"><span class="plot-title mono">Live stream — last 60 samples</span><canvas id="iotPlot"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section wrap" id="about">
+    <div class="sec-head">
+      <h2 class="sec-title">About</h2>
+    </div>
+    <div class="about">
+      <figure class="about-photo fade"><img src="assets/img/profile.webp" alt="Jeetash Goswami at his desk" loading="lazy"></figure>
+      <div class="about-text fade">
+        <p class="lead">I'm Jeetash, an electrical engineer and developer at NUST‑PNEC. Clients come to me when they need one person who can take an idea across the whole stack — the schematic, the board, the firmware on it, the dashboard that reads it, and the simulation that proves it works.</p>
+        <p>My work spans embedded systems (STM32, ESP32, Jetson Nano), custom PCB design, power electronics, AI/ML and simulation — from fabric-defect detection to IoT-enabled industrial safety gear.</p>
+        <p>Outside the lab I founded <b>VisuAle</b>, a visual content studio, and led marketing &amp; corporate sponsorships for <b>Formula Electric Racing NUST</b>. That's taught me to communicate clearly, document well and keep to deadlines.</p>
+        <ul class="principles">
+          <li>Manufacturing-ready files, not just prototypes</li>
+          <li>Clear documentation and weekly updates</li>
+          <li>Hardware, firmware and software in one place</li>
+          <li>Remote support after delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Experience</h3>
+    <ul class="rows">
+      <li class="row fade"><span class="row-a">Freelance</span><span class="row-b">Hardware &amp; Firmware Engineer</span><span class="row-c muted">PCBs, firmware and control electronics for clients — solar BLDC controllers, ESP32-S3 machine controllers, custom ATmega boards, a medical RF-ablation controller.</span></li>
+      <li class="row fade"><span class="row-a">Internship</span><span class="row-b">Tri-Pack Films Limited</span><span class="row-c muted">Cloud SCADA energy-management dashboard with automated GitHub → Railway CI/CD.</span></li>
+      <li class="row fade"><span class="row-a">R&amp;D</span><span class="row-b">IoT safety &amp; AI systems</span><span class="row-c muted">Smart-helmet ignition interlock with dual-band authentication; fabric-defect detection with machine learning.</span></li>
+      <li class="row fade"><span class="row-a">Leadership</span><span class="row-b">Formula Electric Racing NUST</span><span class="row-c muted">Marketing and corporate sponsorships for the university's electric race-car team.</span></li>
+      <li class="row fade"><span class="row-a">Founder</span><span class="row-b">VisuAle</span><span class="row-c muted">Commercial visual content studio — client management and delivery under deadlines.</span></li>
+      <li class="row fade"><span class="row-a">Education</span><span class="row-b">BE Electrical Engineering, NUST — PNEC</span><span class="row-c muted">Power electronics, control systems, embedded systems, machines and signal processing.</span></li>
+    </ul>
+
+    <h3 class="sub-title" id="certs">Certificates <sup id="certCount"></sup></h3>
+    <ul class="rows certs" id="certList"></ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="section wrap contact" id="contact">
+    <div class="contact-grid">
+      <div>
+        <h2 class="contact-title">Have a board to design or a system to build?</h2>
+        <p class="muted">Tell me about your project — scope, timeline and budget if you have them. I usually reply within 24 hours.</p>
+        <a class="big-mail ul" data-link="email" data-text="email"></a>
+        <ul class="links">
+          <li><a class="ul" data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a class="ul" data-link="whatsapp" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+          <li><a class="ul" data-link="github" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a class="ul" data-link="upwork" target="_blank" rel="noopener">Upwork ↗</a></li>
+          <li><a class="ul" data-link="fiverr" target="_blank" rel="noopener">Fiverr ↗</a></li>
+          <li><a class="ul" data-link="cv" target="_blank" rel="noopener">CV ↗</a></li>
+        </ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Project type
+          <select name="type">
+            <option>PCB design &amp; layout</option>
+            <option>Embedded firmware</option>
+            <option>IoT product / dashboard</option>
+            <option>MATLAB / Simulink modelling</option>
+            <option>Power electronics / motor control</option>
+            <option>Simulation (Ansys / FEA)</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>Project details<textarea name="message" rows="4" required></textarea></label>
+        <button class="btn" type="submit">Send message →</button>
+        <p class="form-note small" id="formNote"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><div class="foot">
+  <span>© <span id="year"></span> Jeetash Goswami</span>
+  <span class="muted">PCB · Embedded · IoT · Simulation</span>
+  <a href="#top" class="ul">Back to top ↑</a>
+</div></footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/lab.js"></script>
+</body>
+</html>
