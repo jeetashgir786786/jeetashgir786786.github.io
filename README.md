@@ -31,7 +31,7 @@ Every project has its own page you can send to a client directly:
 | DFIM vector control (Simulink) | `project.html?p=dfim` |
 | Tri-Pack SCADA dashboard | `project.html?p=tripack` |
 
-e.g. `https://jeetashgoswami786.github.io/JeetashGoswami/project.html?p=bldc`
+e.g. `https://jeetashgir786786.github.io/project.html?p=bldc`
 
 ## Links
 Edit `js/config.js`. Any link that is empty, missing or still contains `YOUR-` is hidden automatically.
